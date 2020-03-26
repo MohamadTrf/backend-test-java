@@ -31,4 +31,10 @@ public class BackEndController {
 		Empresa empresa = ep.findByCodigo(codigo);
 		return new ResponseEntity<>(empresa,HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="deletarEmpresa/{codigo}", method = RequestMethod.DELETE)
+	public void deletarEmpresa (@PathVariable ("codigo") long codigo) {
+		Empresa empresa = ep.findByCodigo(codigo);
+		ep.delete(empresa);
+	}
 }
