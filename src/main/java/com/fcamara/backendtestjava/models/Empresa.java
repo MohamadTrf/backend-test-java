@@ -13,9 +13,13 @@ import org.hibernate.validator.constraints.NotEmpty;;
 @Table(name = "Empresa")
 public class Empresa {
 	
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO) // gerando um codigo automaticante do tipo long
+	private long codigo;
+	
 	private String nome;
 	
-	@NotEmpty
+	
 	private String cnpj;
 	
 	private String endereco;
@@ -25,6 +29,14 @@ public class Empresa {
 	private int quantidade_moto;
 	
 	private int quantidade_carro;
+	
+	public long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
+	}
 
 	public String getNome() {
 		return nome;
