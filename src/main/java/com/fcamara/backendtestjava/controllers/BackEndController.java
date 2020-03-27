@@ -1,6 +1,10 @@
 package com.fcamara.backendtestjava.controllers;
 
 import java.util.List;
+
+import javax.transaction.Transactional;
+
+import com.fcamara.backendtestjava.errors.ResourceNotFoundException;
 import com.fcamara.backendtestjava.models.Empresa;
 import com.fcamara.backendtestjava.repository.EmpresaRepository;
 
@@ -36,5 +40,26 @@ public class BackEndController {
 	public void deletarEmpresa (@PathVariable ("codigo") long codigo) {
 		Empresa empresa = ep.findByCodigo(codigo);
 		ep.delete(empresa);
+	}
+	
+	@RequestMapping(value ="alterarEmpresa/{codigo}" , method = RequestMethod.PUT)
+	@Transactional
+	public ResponseEntity<Empresa> alterarEmpresa (@RequestBody Empresa novaEmpresa
+			,@PathVariable long codigo){
+		Empresa empresa = ep.findByCodigo(codigo);
+		if(empresa == null) {
+			throw new   ResourceNotFoundException("Empresa Inexistente! "); 
+		}
+		if(!novaEmpresa.getCnpj().isEmpty()) {
+			throw new ResourceNotFoundException("Cnpj não pode ser alterado"); 
+		}
+
+		empresa.setNome(novaEmpresa.getNome());
+		//empresa.setCnpj(novaEmpresa.getCnpj());
+		empresa.setEndereco(novaEmpresa.getEndereco());
+		empresa.setQuantidade_carro(novaEmpresa.getQuantidade_carro());
+		empresa.setQuantidade_moto(novaEmpresa.getQuantidade_moto());
+		empresa.setTelefone(novaEmpresa.getTelefone());
+		return new ResponseEntity<>(empresa,HttpStatus.OK);
 	}
 }
