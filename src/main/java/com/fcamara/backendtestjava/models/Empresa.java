@@ -30,12 +30,10 @@ public class Empresa {
 	@NotEmpty
 	private String telefone;
 	
-	@NotEmpty
-	private int quantidade_moto;
-	
-	@NotEmpty
 	private int quantidade_carro;
 	
+	private int quantidade_moto;
+
 	public long getCodigo() {
 		return codigo;
 	}
@@ -76,20 +74,20 @@ public class Empresa {
 		this.telefone = telefone;
 	}
 
-	public int getQuantidade_moto() {
-		return quantidade_moto;
-	}
-
-	public void setQuantidade_moto(int quantidade_moto) {
-		this.quantidade_moto = quantidade_moto;
-	}
-
 	public int getQuantidade_carro() {
 		return quantidade_carro;
 	}
 
 	public void setQuantidade_carro(int quantidade_carro) {
 		this.quantidade_carro = quantidade_carro;
+	}
+
+	public int getQuantidade_moto() {
+		return quantidade_moto;
+	}
+
+	public void setQuantidade_moto(int quantidade_moto) {
+		this.quantidade_moto = quantidade_moto;
 	}
 	
 	

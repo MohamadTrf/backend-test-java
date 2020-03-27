@@ -26,7 +26,12 @@ public class BackEndController {
 	 private EmpresaRepository ep;
 	
 	@RequestMapping(value="/cadastrarEmpresa", method = RequestMethod.POST)
-	public ResponseEntity<Empresa> cadastarEmpresa (@RequestBody Empresa empresa){
+	public ResponseEntity<Empresa> cadastrarEmpresa (@RequestBody Empresa empresa){
+
+		//regra para impedir que dois iguais cnpjs esteja no banco
+		if(ep.findByCnpj(empresa.getCnpj()).size() > 0) {
+			throw new   ResourceNotFoundException("Não pode ter dois Cnpjs iguais ! "); 
+		}
 		return new ResponseEntity<>(ep.save(empresa),HttpStatus.CREATED);
 	}
 	

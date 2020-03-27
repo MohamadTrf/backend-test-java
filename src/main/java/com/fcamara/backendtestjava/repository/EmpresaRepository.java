@@ -11,5 +11,7 @@ import com.fcamara.backendtestjava.models.Empresa;
 public interface EmpresaRepository extends CrudRepository <Empresa,String>  {
 	public List<Empresa> findAll();
 	
+	public List<Empresa> findByCnpj(String cnpj);
+	
 	public Empresa findByCodigo (long codigo);
 }
