@@ -36,6 +36,11 @@ public class BackEndController {
 		return new ResponseEntity<>(empresa,HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/buscarEmpresas", method = RequestMethod.GET)
+	public List<Empresa> buscarEmpresas (){
+		return ep.findAll();
+	}
+	
 	@RequestMapping(value="deletarEmpresa/{codigo}", method = RequestMethod.DELETE)
 	public void deletarEmpresa (@PathVariable ("codigo") long codigo) {
 		Empresa empresa = ep.findByCodigo(codigo);
