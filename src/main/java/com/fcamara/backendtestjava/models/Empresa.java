@@ -30,8 +30,10 @@ public class Empresa {
 	@NotEmpty
 	private String telefone;
 	
+	@NotEmpty
 	private int quantidade_carro;
 	
+	@NotEmpty
 	private int quantidade_moto;
 
 	public long getCodigo() {
