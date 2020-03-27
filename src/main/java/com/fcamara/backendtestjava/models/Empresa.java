@@ -6,28 +6,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.NotEmpty;;
+import javax.validation.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Required;;
 
 
 @Entity
-@Table(name = "Empresa")
+@Table(name = "empresa")
 public class Empresa {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO) // gerando um codigo automaticante do tipo long
 	private long codigo;
 	
+	@NotEmpty
 	private String nome;
 	
-	
+	@NotEmpty
 	private String cnpj;
 	
+	@NotEmpty
 	private String endereco;
 	
+	@NotEmpty
 	private String telefone;
 	
+	@NotEmpty
 	private int quantidade_moto;
 	
+	@NotEmpty
 	private int quantidade_carro;
 	
 	public long getCodigo() {
