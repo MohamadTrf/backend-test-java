@@ -13,4 +13,6 @@ public interface VeiculoRepository extends CrudRepository<Veiculo,String> {
 	public List<Veiculo> findByPlaca(String placa);
 	
 	public Veiculo findByCodigo(long codigo);
+	
+	public List<Veiculo> findAll();
 }

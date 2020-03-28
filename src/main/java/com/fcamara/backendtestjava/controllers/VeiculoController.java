@@ -1,5 +1,7 @@
 package com.fcamara.backendtestjava.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +42,11 @@ public class VeiculoController {
 			throw new   ResourceNotFoundException("busca inválida! ");
 		}
 		return new ResponseEntity<>(veiculo, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="buscarVeiculos", method = RequestMethod.GET)
+	public List<Veiculo> buscarTodosVeiculos () {
+		return vp.findAll();
 	}
 	
 	@RequestMapping(value="alterarVeiculo/{codigo}", method = RequestMethod.PUT)

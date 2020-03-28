@@ -42,9 +42,7 @@ public class EmpresaController {
 	}
 	
 	@RequestMapping(value="/buscarEmpresas", method = RequestMethod.GET)
-	public List<Empresa> buscarEmpresas (){
-		return ep.findAll();
-	}
+	public List<Empresa> buscarEmpresas () { return ep.findAll(); }
 	
 	@RequestMapping(value="deletarEmpresa/{codigo}", method = RequestMethod.DELETE)
 	public void deletarEmpresa (@PathVariable ("codigo") long codigo) {
