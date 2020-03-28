@@ -18,6 +18,7 @@ public class Veiculo {
 	@NotEmpty
 	private String marca;
 	
+	@NotEmpty
 	private String modelo;
 	
 	@NotEmpty
