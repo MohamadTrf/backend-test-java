@@ -41,5 +41,22 @@ public class VeiculoController {
 		}
 		return new ResponseEntity<>(veiculo, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value="alterarVeiculo/{codigo}", method = RequestMethod.PUT)
+	public ResponseEntity<Veiculo> alterarVeiculo (@RequestBody Veiculo novoVeiculo , @PathVariable long codigo){
+		Veiculo veiculo = vp.findByCodigo(codigo);
+		
+		if(veiculo == null) {
+			throw new ResourceNotFoundException("Alteração Inválida");
+		}
+		
+		veiculo.setMarca(novoVeiculo.getMarca());
+		veiculo.setModelo(novoVeiculo.getModelo());
+		veiculo.setCor(novoVeiculo.getCor());
+		veiculo.setPlaca(novoVeiculo.getPlaca());
+		veiculo.setTipo(novoVeiculo.getTipo());
+		
+		return new ResponseEntity<>(veiculo,HttpStatus.OK);
+	}
 
 }
