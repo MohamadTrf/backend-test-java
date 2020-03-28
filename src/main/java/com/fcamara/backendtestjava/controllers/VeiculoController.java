@@ -32,5 +32,14 @@ public class VeiculoController {
 		Veiculo veiculo = vp.findByCodigo(codigo);
 		vp.delete(veiculo);
 	}
+	
+	@RequestMapping(value="buscarVeiculo/{codigo}", method = RequestMethod.GET)
+	public ResponseEntity<Veiculo> buscarVeiculo (@PathVariable ("codigo") long codigo){
+		Veiculo veiculo = vp.findByCodigo(codigo);
+		if(veiculo == null) {
+			throw new   ResourceNotFoundException("busca inválida! ");
+		}
+		return new ResponseEntity<>(veiculo, HttpStatus.OK);
+	}
 
 }
