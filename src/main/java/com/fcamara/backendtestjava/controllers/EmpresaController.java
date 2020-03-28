@@ -20,14 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class BackEndController {
+public class EmpresaController {
 	
 	@Autowired
 	 private EmpresaRepository ep;
 	
 	@RequestMapping(value="/cadastrarEmpresa", method = RequestMethod.POST)
 	public ResponseEntity<Empresa> cadastrarEmpresa (@RequestBody Empresa empresa){
-
+		System.out.println("TESTEEEEEEEEEEEE");
+		System.out.println(empresa.getQuantidade_carro());
+		//System.out.println(empresa.getQuantidade_carro());
 		//regra para impedir que dois iguais cnpjs esteja no banco
 		if(ep.findByCnpj(empresa.getCnpj()).size() > 0) {
 			throw new   ResourceNotFoundException("Não pode ter dois Cnpjs iguais ! "); 

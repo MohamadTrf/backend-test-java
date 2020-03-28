@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import javax.validation.constraints.NotEmpty;
-import org.springframework.beans.factory.annotation.Required;;
 
 
 @Entity
@@ -30,10 +29,10 @@ public class Empresa {
 	@NotEmpty
 	private String telefone;
 	
-	@NotEmpty
+	
 	private int quantidade_carro;
 	
-	@NotEmpty
+	
 	private int quantidade_moto;
 
 	public long getCodigo() {
