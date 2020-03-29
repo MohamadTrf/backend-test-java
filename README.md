@@ -19,7 +19,7 @@ create table Empresa(
 );
 
 create table Veiculo(
-	codigo int AUTO_INCREMENT PRIMARY KEY,
+    codigo int AUTO_INCREMENT PRIMARY KEY,
     marca varchar(30),
     modelo varchar(15),
     cor varchar(10),
@@ -28,3 +28,5 @@ create table Veiculo(
 );
 ```
 A conexão se encontra no application.properties
+
+A aplicação gera um swagger após "buildar" ela porém coloquei uma collection com o nome "Api-Java.postman_collection" para os amantes do postman , e só exportar a collection para o postman que todas as requests estarão prontas
