@@ -63,7 +63,7 @@ public class VeiculoController {
 		veiculo.setPlaca(novoVeiculo.getPlaca());
 		veiculo.setTipo(novoVeiculo.getTipo());
 		
-		return new ResponseEntity<>(veiculo,HttpStatus.OK);
+		return new ResponseEntity<>(vp.save(veiculo),HttpStatus.OK);
 	}
 
 }

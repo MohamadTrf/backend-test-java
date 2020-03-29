@@ -55,19 +55,20 @@ public class EmpresaController {
 	public ResponseEntity<Empresa> alterarEmpresa (@RequestBody Empresa novaEmpresa
 			,@PathVariable long codigo){
 		Empresa empresa = ep.findByCodigo(codigo);
+
 		if(empresa == null) {
 			throw new   ResourceNotFoundException("Empresa Inexistente! "); 
 		}
-		if(!novaEmpresa.getCnpj().isEmpty()) {
-			throw new ResourceNotFoundException("Cnpj não pode ser alterado"); 
+		if(ep.findByCnpj(novaEmpresa.getCnpj()).size() > 0) {
+			throw new   ResourceNotFoundException("Não pode ter dois Cnpjs iguais ! "); 
 		}
 
 		empresa.setNome(novaEmpresa.getNome());
-		//empresa.setCnpj(novaEmpresa.getCnpj());
+		empresa.setCnpj(novaEmpresa.getCnpj());
 		empresa.setEndereco(novaEmpresa.getEndereco());
 		empresa.setQuantidade_carro(novaEmpresa.getQuantidade_carro());
 		empresa.setQuantidade_moto(novaEmpresa.getQuantidade_moto());
 		empresa.setTelefone(novaEmpresa.getTelefone());
-		return new ResponseEntity<>(empresa,HttpStatus.OK);
+		return new ResponseEntity<>(ep.save(empresa),HttpStatus.OK);
 	}
 }
