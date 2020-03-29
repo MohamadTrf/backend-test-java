@@ -22,7 +22,7 @@ public class VeiculoController {
 	private VeiculoRepository vp;
 	
 	@RequestMapping(value="/cadastrarVeiculo", method = RequestMethod.POST)
-	public ResponseEntity<Veiculo> cadastarEmpresa (@RequestBody Veiculo veiculo){
+	public ResponseEntity<Veiculo> cadastrarVeiculo (@RequestBody Veiculo veiculo){
 		if(vp.findByPlaca(veiculo.getPlaca()).size() > 0) {
 			throw new   ResourceNotFoundException("Não pode ter dois carros com a mesma placa! "); 
 		}
